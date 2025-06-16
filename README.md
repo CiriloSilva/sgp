@@ -1,6 +1,6 @@
-# SGP – Sistema de Gestão de Pontos
+# 🕰️ SGP – Sistema de Gestão de Pontos
 
-Este SGP (Sistema de Gestão de Pontos) foi desenvolvido exclusivamente para fins de aprendizado em disciplinas de IoT, banco de dados e desenvolvimento web. Ele não foi projetado para uso em produção ou para tratamento de dados sensíveis de RH sem revisão de segurança.
+Este SGP (Sistema de Gestão de Pontos) foi desenvolvido exclusivamente para fins de aprendizado na disciplina de POSI, APBD e PWEB. Ele não foi projetado para uso em produção ou para tratamento de dados sensíveis de RH sem revisão de segurança.
 
 > **Projeto acadêmico** desenvolvido como prova de conceito para controle de presença de colaboradores via **ESP8266 + PN532 (RFID)**, com backend **PHP/MySQL** e interface web responsiva.
 
