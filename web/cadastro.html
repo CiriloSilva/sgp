@@ -1,0 +1,51 @@
+
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <title>Cadastro • Controle de Ponto</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <header>
+      <h3>Controle de Ponto</h3>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+        <a href="cadastro.html">Cadastro</a>
+        <a href="relatorio.php">Relatório</a>
+      </nav>
+    </header>
+
+    <div class="container" id="cadApp">
+      <h2>Cadastrar Funcionário</h2>
+      <form @submit.prevent="salvar">
+        <label>UID RFID</label>
+        <input v-model="uid" required>
+        <label>Nome</label>
+        <input v-model="nome" required>
+        <button>Salvar</button>
+      </form>
+      <p v-if="msg">{{ msg }}</p>
+    </div>
+
+    <script>
+      const { createApp, ref } = Vue;
+      createApp({
+        setup(){
+          const uid  = ref('');
+          const nome = ref('');
+          const msg  = ref('');
+          async function salvar(){
+            const data = new URLSearchParams({ uid: uid.value, nome: nome.value });
+            const res  = await fetch('funcionarios.php', { method:'POST', body:data });
+            msg.value = await res.text();
+            uid.value=''; nome.value='';
+          }
+          return { uid, nome, msg, salvar };
+        }
+      }).mount('#cadApp');
+    </script>
+  </body>
+</html>

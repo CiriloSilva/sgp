@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-br">
+  <meta charset="utf-8">
+  <head>
+    <title>Registrar</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <header>
+      <h3>Controle de Ponto</h3>
+      <nav>
+        <a href="index.php">Home</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Registrar</a>
+        <a href="relatorio.php">Relatório</a>
+      </nav>
+    </header>
+    <div class="container">
+      <h2>Novo Usuário</h2>
+      <form id="regForm">
+        <label>Email</label><input type="email" name="email" required>
+        <label>Senha</label><input type="password" name="senha" required>
+        <button>Criar conta</button>
+      </form>
+    </div>
+    <script src="modal.js"></script>
+    <script>
+    document.getElementById('regForm').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const data = new URLSearchParams(new FormData(e.target));
+      const res = await fetch('register.php', {method:'POST', body:data});
+      if(res.ok){
+        showModal('Usuário criado com sucesso!', 'login.html');
+      }else{
+        const msg = await res.text();
+        showModal('Erro: '+msg);
+      }
+    });
+    </script>
+  </body>
+</html>
